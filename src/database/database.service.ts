@@ -29,8 +29,10 @@ export class DatabaseService {
   }
   initTables() {
     const moviesEntity = new MoviesEntity();
-
-    const moviesTable = this.connection.define(moviesEntity.getName(), moviesEntity.getColumn());
-    moviesTable.sync({ force: true });
+    this.connection.define(moviesEntity.getName(), moviesEntity.getColumn());
+    // synch one table
+    // const moviesTable = this.connection.define(moviesEntity.getName(), moviesEntity.getColumn());
+    // moviesTable.sync({ force: true });
+    this.connection.sync();
   }
 }
